@@ -1,6 +1,7 @@
 package example;
 
 import com.google.inject.Inject;
+import cucumber.annotation.After;
 import cucumber.annotation.Before;
 import cucumber.annotation.en.And;
 import cucumber.annotation.en.Given;
@@ -82,5 +83,10 @@ public class Insly {
         homePage.click(homePage.signUpButton);
         Thread.sleep(15000);
         assertTrue(homePage.getCurrentUrl().contains(domainUrl));
+    }
+
+    @After("@end")
+    public void tearDown() {
+        homePage.quit();
     }
 }
